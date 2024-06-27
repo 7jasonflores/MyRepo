@@ -5,29 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milestone 1</title>
     <link rel="stylesheet" href="stylesheet.css">
-</head>
-<body>
-    <h1>Jason Flores</h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+          $("#hide").click(function(){
+            $("p").hide();
+          });
+          $("#show").click(function(){
+            $("p").show();
+          });
+        });
+        </script>
+        </head>
+        <body>
+        
+            <h1>Jason Flores</h1>
 
-    <div id="navbar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="milestone1.html">Milestone 1</a></li>
-            <li><a href="milestone2.html">Milestone 2</a></li>
-            <li><a href="milestone3.html">Milestone 3</a></li>
-            <li><a href="milestone4.html">Milestone 4</a></li>
-            <li><a href="http://ccse.kennesaw.edu/it">KSU Website</a></li>
+        <div id="navbar">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="milestone1.html">Milestone 1</a></li>
+              <li><a href="milestone2.html">Milestone 2</a></li>
+              <li><a href="milestone3.html">Milestone 3</a></li>
+              <li><a href="milestone4.html">Milestone 4</a></li>
+              <li><a href="http://ccse.kennesaw.edu/it">KSU Website</a></li>
           </ul>
       </table></div>
 
-      <h2>Milestone 1</h2>
-
-    <!-- Milestone 1 -->
-
-
+      <div>
+        <h2>Milestone 1</h2>
+    </div>
 
 
-    
-
-</body>
+        <p>If you click on the "Hide" button, I will disappear.</p>
+        
+        <button id="hide">Hide</button>
+        <button id="show">Show</button>
+        
+        </body>
 </html>
