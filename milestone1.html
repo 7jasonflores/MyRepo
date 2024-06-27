@@ -5,42 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milestone 1</title>
     <link rel="stylesheet" href="stylesheet.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-          $("#hide").click(function(){
-            $("p").hide();
-          });
-          $("#show").click(function(){
-            $("p").show();
-          });
-        });
-        </script>
-        </head>
-        <body>
-        
-            <h1>Jason Flores</h1>
+</head>
+<body>
 
-        <div id="navbar">
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="milestone1.html">Milestone 1</a></li>
-              <li><a href="milestone2.html">Milestone 2</a></li>
-              <li><a href="milestone3.html">Milestone 3</a></li>
-              <li><a href="milestone4.html">Milestone 4</a></li>
-              <li><a href="http://ccse.kennesaw.edu/it">KSU Website</a></li>
-          </ul>
-      </table></div>
+  <!--HTML-->
+  <h1>Jason Flores</h1>
 
-      <div>
-        <h2>Milestone 1</h2>
-    </div>
+  <div id="navbar">
+      <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="milestone1.html">Milestone 1</a></li>
+          <li><a href="milestone2.html">Milestone 2</a></li>
+          <li><a href="milestone3.html">Milestone 3</a></li>
+          <li><a href="milestone4.html">Milestone 4</a></li>
+          <li><a href="http://ccse.kennesaw.edu/it">KSU Website</a></li>
+        </ul>
+    </table></div>
+
+    <p id="book-details"> </p>
 
 
-        <p>If you click on the "Hide" button, I will disappear.</p>
-        
-        <button id="hide">Hide</button>
-        <button id="show">Show</button>
-        
-        </body>
+
+
+
+
+  <!--SCRIPT-->
+  <!--this took me longer than it needed to it was pretty easy-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      //use to get a json file into jquery
+      $.getJSON('json-files/google-books-book.json').done(function(data) {
+        //creates the object "book"
+      const book = data.volumeInfo;
+      //returns all blue details asked from json file
+      //use backticks for multiple lines quotes didnt work
+        $('#book-details').html(`<img src="${book.imageLinks.smallThumbnail}" alt="thumbNail">
+          <h2>${book.title}</h2>
+          <h3>Author: ${book.authors}</h3>
+          <h4>Published Date: ${book.publishedDate}</h4>
+          <p>${book.description}</p>`
+        );
+      })
+    });
+    </script>
+
+
+<!--personal notes in green jquery for future reference-->
+
+</body>
 </html>
+
