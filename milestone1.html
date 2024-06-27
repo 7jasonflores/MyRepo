@@ -22,47 +22,34 @@
         </ul>
     </table></div>
 
-    <div id="book-container"></div>
+    <p id="book-details"> </p>
 
-  <!-- jQuery CDN -->
+
+
+
+
+
+  <!--SCRIPT-->
+  <!--this took me longer than it needed to it was pretty easy-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-
-    // Fetch and display book information
-    fetch('https://www.googleapis.com/books/v1/volumes/Wfan6L9RGgYC')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data); // Check the console to see the structure of the data
-        // Call function to display data on the webpage
-        displayBookInfo(data);
+    $(document).ready(function() {
+      //use to get a json file into jquery
+      $.getJSON('json-files/google-books-book.json').done(function(data) {
+        //creates the object "book"
+      const book = data.volumeInfo;
+      //returns all blue details asked from json file
+      //use backticks for multiple lines quotes dont work
+        $('#book-details').html(`<img src="${book.imageLinks.smallThumbnail}" alt="thumbNail">
+          <h2>${book.title}</h2>
+          <h3>Author: ${book.authors}</h3>
+          <h4>Published Date: ${book.publishedDate}</h4>
+          <p>${book.description}</p>`
+        );
       })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+    });
+    </script>
 
-    function displayBookInfo(bookData) {
-      // Extract relevant information from the bookData
-      const title = bookData.volumeInfo.title;
-      const authors = bookData.volumeInfo.authors.join(', ');
-      const description = bookData.volumeInfo.description;
-      const thumbnail = bookData.volumeInfo.imageLinks.thumbnail;
-
-      // Construct HTML elements to display the book information
-      const bookInfoHTML = `
-        <div class="book-info">
-          <img src="${thumbnail}" alt="Book Cover">
-          <div class="details">
-            <h2>${title}</h2>
-            <p><strong>Authors:</strong> ${authors}</p>
-            <p><strong>Description:</strong> ${description}</p>
-          </div>
-        </div>
-      `;
-
-      // Append the HTML to a container on the webpage (e.g., a div with id="book-container")
-      document.getElementById('book-container').innerHTML = bookInfoHTML;
-    }
-  </script>
 
 <!--personal notes in green jquery for future reference-->
 
